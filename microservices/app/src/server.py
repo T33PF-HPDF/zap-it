@@ -18,25 +18,24 @@ def home():
 def json_message():
     return jsonify(message="Hello Global User")
 
-@app.route("/create-row-in-gs")
-def dummy():
-    return make_response("Dummy")
-
-@app.route("/create-row-in-gs",methods=['POST'])
+@app.route("/create-row-in-gs",methods=['GET','POST'])
 def create_row_in_gs():
-    t_id = request.json['id']
-    t_name = request.json['name']
-    created_on = request.json['created_on']
-    modified_on = request.json['modified_on']
-    desc = request.json['desc']
+    if request.method == 'POST':
+        t_id = request.json['id']
+        t_name = request.json['name']
+        created_on = request.json['created_on']
+        modified_on = request.json['modified_on']
+        desc = request.json['desc']
 
-    create_row_data = {'id': str(t_id),'name':str(t_name),'created-on':str(created_on),'modified-on':str(modified_on),'desc':str(desc)}
+        create_row_data = {'id': str(t_id),'name':str(t_name),'created-on':str(created_on),'modified-on':str(modified_on),'desc':str(desc)}
 
-    response = requests.post(
-        globalCreateRowWebhook, data=json.dumps(create_row_data),
-        headers={'Content-Type': 'application/json'}
-    )
-    return response
+        response = requests.post(
+            globalCreateRowWebhook, data=json.dumps(create_row_data),
+            headers={'Content-Type': 'application/json'}
+        )
+        return response
+    if request.method == 'GET':
+        return make_response('failure')
     
     
     
