@@ -1,5 +1,5 @@
 from src import app
-from flask import jsonify
+from flask import jsonify,request
 from json import dumps
 from requests import post
 
@@ -20,11 +20,11 @@ def json_message():
 
 @app.route("/create-row-in-gs",methods=['POST'])
 def create_row_in_gs():
-    t_id = request.form['id']
-    t_name = request.form['name']
-    created_on = request.form['created_on']
-    modified_on = request.form['modified_on']
-    desc = request.form['desc']
+    t_id = request.json['id']
+    t_name = request.json['name']
+    created_on = request.json['created_on']
+    modified_on = request.json['modified_on']
+    desc = request.json['desc']
 
     create_row_data = {'id': str(t_id),'name':str(t_name),'created-on':str(created_on),'modified-on':str(modified_on),'desc':str(desc)}
 
@@ -32,7 +32,7 @@ def create_row_in_gs():
         globalCreateRowWebhook, data=json.dumps(create_row_data),
         headers={'Content-Type': 'application/json'}
     )
-    print(response)
+    return response
     
     
     
