@@ -20,7 +20,7 @@ def json_message():
 
 @app.route("/create-row-in-gs")
 def dummy():
-    return "Dummy"
+    return make_response("Dummy")
 
 @app.route("/create-row-in-gs",methods=['POST'])
 def create_row_in_gs():
