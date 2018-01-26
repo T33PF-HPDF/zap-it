@@ -8,8 +8,6 @@ globalCreateSpreadsheetWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8
 globalUpdateRowWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8v1s1s/'
 globalDeleteRowWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8v1n8t/'
 
-sampleCreateRowInGSRequest = 
-
 @app.route("/")
 def home():
     return "ZapIt : Backend! - Hello Global User"
