@@ -1,5 +1,5 @@
 from src import app
-from flask import jsonify,request,make_response
+from flask import jsonify,request,make_response,url_for,redirect
 from json import dumps
 from requests import post
 
@@ -20,7 +20,7 @@ def json_message():
 
 @app.route("/create-row-in-gs",methods=['GET'])
 def doSomething():
-    return make_response("Dummy")
+    return redirect(url_for('create_row_in_gs'), code=307)
 
 @app.route("/create-row-in-gs",methods=['POST'])
 def create_row_in_gs():
