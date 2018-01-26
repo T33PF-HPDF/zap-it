@@ -18,11 +18,7 @@ def home():
 def json_message():
     return jsonify(message="Hello Global User")
 
-@app.route("/create-row-in-gs",methods=['GET'])
-def doSomething():
-    return redirect(url_for('create_row'), code=307)
-
-@app.route("/create-row",methods=['POST'])
+@app.route("/create-row-in-gs",methods=['GET','POST'])
 def create_row_in_gs():
     if request.method == 'POST':
         t_id = request.json['id']
