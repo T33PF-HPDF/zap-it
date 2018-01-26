@@ -20,9 +20,9 @@ def json_message():
 
 @app.route("/create-row-in-gs",methods=['GET'])
 def doSomething():
-    return redirect(url_for('create_row_in_gs'), code=307)
+    return redirect(url_for('create_row'), code=307)
 
-@app.route("/create-row-in-gs",methods=['POST'])
+@app.route("/create-row",methods=['POST'])
 def create_row_in_gs():
     if request.method == 'POST':
         t_id = request.json['id']
