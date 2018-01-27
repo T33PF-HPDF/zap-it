@@ -32,7 +32,7 @@ def create_row_in_gs():
         
         response = requests.post(
             globalCreateRowWebhook, data=json.dumps(create_row_data),
-            headers={'Content-Type': 'application/json'}
+            headers={'Content-Type': 'application/json'},allow_redirects=False
         )
         return response.content
     
