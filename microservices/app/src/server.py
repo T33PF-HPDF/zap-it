@@ -10,19 +10,22 @@ class CreateRow(Resource):
     def get(self):
         return {'Parameters':'id,name,created_on,modified_on,desc in JSON format','Desc':'Creates a row in a Google spreadsheet.'}
     def put(self):
-        if request.method == "PUT" and request.form.get('id',"None") != "None":
-            row = {
-                'id': request.form['id']
-                ,'name': request.form['name']
-                ,'created_on': request.form['created_on']
-                ,'modified_on': request.form['modified_on']
-                ,'desc': request.form['desc']}
-            url = 'https://hooks.zapier.com/hooks/catch/2836701/8fmhzu/'
-            response = post(
-                url=url, json=dumps(row))
-            return response.text
+        if request.method == "PUT":
+            if request.form.get('id',"None") != "None"
+                row = {
+                    'id': request.form['id']
+                    ,'name': request.form['name']
+                    ,'created_on': request.form['created_on']
+                    ,'modified_on': request.form['modified_on']
+                    ,'desc': request.form['desc']}
+                url = 'https://hooks.zapier.com/hooks/catch/2836701/8fmhzu/'
+                response = post(
+                    url=url, json=dumps(row))
+                return response.text
+            else:
+                return "Parameters not binded"
         else:
-            return "Bad Request"
+            return "Bad Request: Not a PUT request"
 
 api.add_resource(CreateRow, '/CreateRow')
     
