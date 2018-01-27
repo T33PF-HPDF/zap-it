@@ -1,7 +1,6 @@
 from src import app
 from flask import jsonify,request,make_response,url_for,redirect
-from json import dumps
-from requests import post
+import requests,json
 
 globalCreateRowWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8fmhzu/'
 globalCreateSpreadsheetWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8raumf/'
@@ -20,23 +19,20 @@ def json_message():
 
 @app.route('/create-row-in-gs', methods=['POST'])
 def create_row_in_gs():
+    if request.method == 'GET':
+        return 'failure'
     if request.method == 'POST':
         t_id = request.json['id']
         t_name = request.json['name']
         created_on = request.json['created_on']
         modified_on = request.json['modified_on']
         desc = request.json['desc']
-
+        
         create_row_data = {'id': str(t_id),'name':str(t_name),'created-on':str(created_on),'modified-on':str(modified_on),'desc':str(desc)}
-
+        
         response = requests.post(
             globalCreateRowWebhook, data=json.dumps(create_row_data),
             headers={'Content-Type': 'application/json'}
         )
-        return response
-    if request.method == 'GET':
-        return make_response('failure')
-    
-    
-    
+        return 'post'
     
