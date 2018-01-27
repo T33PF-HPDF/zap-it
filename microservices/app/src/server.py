@@ -20,7 +20,7 @@ def json_message():
 @app.route('/create-row-in-gs', methods=['GET','POST'])
 def create_row_in_gs():
     if request.method == 'GET':
-        return make_response('Failure',code=400)
+        return make_response('Failure')
     if request.method == 'POST':
         t_id = request.json['id']
         t_name = request.json['name']
