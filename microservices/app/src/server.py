@@ -19,7 +19,7 @@ class CreateRow(Resource):
         url = 'https://hooks.zapier.com/hooks/catch/2836701/8fmhzu/'
         response = post(
             url=url, json=dumps(row))
-        return row
+        return response.text
 
 api.add_resource(CreateRow, '/CreateRow')
     
