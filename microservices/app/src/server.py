@@ -17,7 +17,7 @@ def home():
 def json_message():
     return jsonify(message="Hello Global User")
 
-@app.route('/create-row-in-gs', methods=['POST'])
+@app.route('/create-row-in-gs', methods=['GET','POST'])
 def create_row_in_gs():
     if request.method == 'GET':
         return make_response('Failure',code=400)
