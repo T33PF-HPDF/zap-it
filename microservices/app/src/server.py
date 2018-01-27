@@ -31,7 +31,7 @@ def create_row_in_gs():
         create_row_data = {'id': str(t_id),'name':str(t_name),'created-on':str(created_on),'modified-on':str(modified_on),'desc':str(desc)}
         
         response = requests.post(
-            globalCreateRowWebhook, data=json.dumps(create_row_data),
+            globalCreateRowWebhook, json=json.dumps(create_row_data),
             headers={'Content-Type': 'application/json'},allow_redirects=False
         )
         return response.content
