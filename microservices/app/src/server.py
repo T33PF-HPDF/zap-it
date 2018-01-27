@@ -2,10 +2,8 @@ from src import app
 from flask import jsonify,request,make_response,url_for,redirect
 import requests,json
 
+# Set the webhook_url to the one provided by Zapier when you create the webhook
 globalCreateRowWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8fmhzu/'
-globalCreateSpreadsheetWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8raumf/'
-globalUpdateRowWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8v1s1s/'
-globalDeleteRowWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8v1n8t/'
 
 @app.route("/")
 def home():
