@@ -1,7 +1,8 @@
 from src import app
-from flask import jsonify,request,make_response,url_for,redirect
+from flask import request
 from flask_restful import Resource, Api
-import requests,json
+from requests import post
+from json import dumps
 
 api = Api(app)
 
