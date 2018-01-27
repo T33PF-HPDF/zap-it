@@ -5,31 +5,20 @@ import requests,json
 
 api = Api(app)
 
-# Set the webhook_url to the one provided by Zapier when you create the webhook
-globalCreateRowWebhook = 'https://hooks.zapier.com/hooks/catch/2836701/8fmhzu/'
+class CreateRow(Resource):
+    def get(self):
+        return {'Parameters':'id,name,created_on,modified_on,desc in JSON format','Desc':'Creates a row in a Google spreadsheet.'}
+    def put(self):
+        row = {
+            'id': request.form['id']
+            ,'name': request.form['name']
+            ,'created_on': request.form['created_on']
+            ,'modified_on': request.form['modified_on']
+            ,'desc': request.form['desc']}
+        url = 'https://hooks.zapier.com/hooks/catch/2836701/8fmhzu/'
+        response = post(
+            url=url, json=dumps(row))
+        return row
 
-@app.route("/")
-def home():
-    return "ZapIt : Backend! - Hello Global User"
-
-@app.route('/create_row_in_gs', methods=['GET','POST'])
-def createRowInGS():
-    return str(request.method+" "+request.json['t_name'])
-##    if request.method == 'GET':
-##        return make_response('Failure')
-##    if request.method == 'POST':
-##        t_id = request.json['id']
-##        t_name = request.json['name']
-##        created_on = request.json['created_on']
-##        modified_on = request.json['modified_on']
-##        desc = request.json['desc']
-##        
-##        create_row_data = {'id': str(t_id),'name':str(t_name),'created_on':str(created_on),'modified_on':str(modified_on),'desc':str(desc)}
-##        
-####        response = requests.post(
-####            globalCreateRowWebhook, json=json.dumps(create_row_data),
-####            headers={'Content-Type': 'application/json'})
-##        return response.content
-
-api.add_resource(createRowInGS, '/create_row_in_gs')
+api.add_resource(CreateRow, '/CreateRow')
     
