@@ -20,7 +20,7 @@ def json_message():
 @app.route('/create-row-in-gs', methods=['POST'])
 def create_row_in_gs():
     if request.method == 'GET':
-        return 'failure'
+        return make_response('Failure',code=400)
     if request.method == 'POST':
         t_id = request.json['id']
         t_name = request.json['name']
@@ -34,5 +34,5 @@ def create_row_in_gs():
             globalCreateRowWebhook, data=json.dumps(create_row_data),
             headers={'Content-Type': 'application/json'}
         )
-        return 'post'
+        return response.content
     
