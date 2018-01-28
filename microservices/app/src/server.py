@@ -11,6 +11,7 @@ class CreateRow(Resource):
         return {'Parameters':'id,name,created_on,modified_on,desc all in a dictionary','Desc':'Creates a row in a Google spreadsheet.'}
     def put(self):
         if request.method == "PUT":
+            return request.data.decode(encoding="UTF-8")
             parser = reqparse.RequestParser()
             parser.add_argument('id', type=str, help='ID')
             parser.add_argument('name', type=str, help='Name')
@@ -18,7 +19,7 @@ class CreateRow(Resource):
             parser.add_argument('modified_on', type=str, help='Last Modified on')
             parser.add_argument('desc', type=str, help='Description')
             args = parser.parse_args()
-            response.status_code = 400
+            
             return args
             
             if request.form.get('id',"None") != "None":
