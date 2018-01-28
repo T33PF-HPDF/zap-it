@@ -15,7 +15,7 @@ class CreateRow(Resource):
 ##            parser.add_argument('id', type=str, help='Test string')
 ##            args = parser.parse_args()
 ##            return args
-            return request.text
+            return request.json()
             
             if request.form.get('id',"None") != "None":
                 row = {
