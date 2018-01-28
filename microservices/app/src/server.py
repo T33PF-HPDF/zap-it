@@ -16,8 +16,7 @@ class CreateRow(Resource):
 ##            parser = reqparse.RequestParser()
 ##            parser.add_argument('data', type=str, help='Test string')
 ##            args = parser.parse_args(strict=True)
-            if content['id'] == '1236':
-                return 'Victory is ours!'
+            return content[0]
             
             if request.form.get('id',"None") != "None":
                 row = {
