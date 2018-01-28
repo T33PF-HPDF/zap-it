@@ -1,6 +1,6 @@
 from src import app
 from flask import request
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse
 from requests import post
 from json import dumps
 
@@ -14,6 +14,9 @@ class CreateRow(Resource):
             if request.values.get('data','None') != 'None':
                 return request.values.get('data')
             else:
+                parser = reqparse.RequestParser()
+                parser.add_argument('data', type=str, help='Test string')
+                args = parser.parse_args(strict=True)
                 return "Not binded"
 ##            if request.form.get('id',"None") != "None":
 ##                row = {
