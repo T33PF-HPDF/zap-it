@@ -2,7 +2,7 @@ from src import app
 from flask import request
 from flask_restful import Resource, Api, reqparse
 from requests import post
-from json import dumps
+from json import dumps,loads
 
 api = Api(app)
 
@@ -11,7 +11,7 @@ class CreateRow(Resource):
         return {'Parameters':'id,name,created_on,modified_on,desc all in a dictionary','Desc':'Creates a row in a Google spreadsheet.'}
     def put(self):
         if request.method == "PUT":
-            return json.loads(request.data)
+            return loads(request.data)
             parser = reqparse.RequestParser()
             parser.add_argument('id', type=str, help='ID')
             parser.add_argument('name', type=str, help='Name')
