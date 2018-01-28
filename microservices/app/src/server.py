@@ -8,12 +8,17 @@ api = Api(app)
 
 class CreateRow(Resource):
     def get(self):
-        return {'Parameters':'id,name,created_on,modified_on,desc in JSON format','Desc':'Creates a row in a Google spreadsheet.'}
+        return {'Parameters':'id,name,created_on,modified_on,desc all in a dictionary','Desc':'Creates a row in a Google spreadsheet.'}
     def put(self):
         if request.method == "PUT":
-            parser = reqparse.RequestParser()
-            parser.add_argument('data', type=str, help='Test string')
-            args = parser.parse_args(strict=True)
+            content = request.data
+            content = content.decode(encoding='UTF-8')
+##            parser = reqparse.RequestParser()
+##            parser.add_argument('data', type=str, help='Test string')
+##            args = parser.parse_args(strict=True)
+            if content['id'] == '1236':
+                return 'Victory is ours!'
+            
             if request.form.get('id',"None") != "None":
                 row = {
                     'id': request.form['id']
