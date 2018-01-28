@@ -18,6 +18,7 @@ class CreateRow(Resource):
             parser.add_argument('modified_on', type=str, help='Last Modified on')
             parser.add_argument('desc', type=str, help='Description')
             args = parser.parse_args()
+            response.status_code = 400
             return args
             
             if request.form.get('id',"None") != "None":
