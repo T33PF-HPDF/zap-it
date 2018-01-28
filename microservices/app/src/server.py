@@ -17,7 +17,7 @@ class CreateRow(Resource):
                 parser = reqparse.RequestParser()
                 parser.add_argument('data', type=str, help='Test string')
                 args = parser.parse_args(strict=True)
-                return "Not binded"
+                return args
 ##            if request.form.get('id',"None") != "None":
 ##                row = {
 ##                    'id': request.form['id']
