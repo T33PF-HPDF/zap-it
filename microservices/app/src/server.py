@@ -11,8 +11,8 @@ class CreateRow(Resource):
         return {'Parameters':'id,name,created_on,modified_on,desc in JSON format','Desc':'Creates a row in a Google spreadsheet.'}
     def put(self):
         if request.method == "PUT":
-            if request.form.get('data','None') != 'None':
-                return request.form.get('data')
+            if request.values.get('data','None') != 'None':
+                return request.values.get('data')
             else:
                 return "Not binded"
 ##            if request.form.get('id',"None") != "None":
