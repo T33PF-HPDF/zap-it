@@ -11,7 +11,7 @@ class CreateRow(Resource):
         return {'Parameters':'id,name,created_on,modified_on,desc all in a dictionary','Desc':'Creates a row in a Google spreadsheet.'}
     def put(self):
         if request.method == "PUT":
-            return loads(request.data)
+            return request.get_json()
         
             parser = reqparse.RequestParser()
             parser.add_argument('id', type=str, help='ID')
