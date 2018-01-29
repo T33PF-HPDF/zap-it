@@ -22,6 +22,10 @@ class CreateRow(Resource):
 ##            args = parser.parse_args()
 ##            
 ##            return args
+            create_row = loads(request.data)
+            url = 'https://hooks.zapier.com/hooks/catch/2836701/8fmhzu/'
+            response = post(url=url, json=dumps(create_row))
+            return response.text
             
             if request.form.get('id',"None") != "None":
                 row = {
