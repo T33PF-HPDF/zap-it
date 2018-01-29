@@ -35,7 +35,7 @@ class CreateRow(Resource):
                     url=url, json=dumps(row))
                 return response.text
             else:
-                return args
+                return 'Lost'
         else:
             return "Bad Request: Not a PUT request"
 
